@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
-
-// components
-import EditMovie from '../components/EditMovie';
+import { Link } from 'react-router-dom';
 
 const MovieCard = props => {
   const { title, director, metascore, stars } = props.movie;
-  const [edit, setEdit] = useState(false);
 
-  const toggleEdit = (e) => {
+  const updateMovie = (e) => {
     e.preventDefault();
-    setEdit(!edit);
+
   }
 
   return (
@@ -28,8 +25,7 @@ const MovieCard = props => {
           {star}
         </div>
       ))}
-      <button onClick={toggleEdit}>Edit Movie</button>
-      {edit && <EditMovie movie={props.movie} />}
+      <button onClick={updateMovie}>Edit Movie</button>
     </div>
   );
 };
