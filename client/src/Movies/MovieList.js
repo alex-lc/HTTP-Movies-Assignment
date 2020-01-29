@@ -21,17 +21,17 @@ export default class MovieList extends Component {
     return (
       <div className="movie-list">
         {this.state.movies.map(movie => (
-          <MovieDetails key={movie.id} movie={movie} />
+          <MovieDetails key={movie.id} movie={movie} movies={this.state.movies} />
         ))}
       </div>
     );
   }
 }
 
-function MovieDetails({ movie }) {
+function MovieDetails({ movie, movies }) {
   return (
     <Link to={`/movies/${movie.id}`}>
-      <MovieCard movie={movie} />
+      <MovieCard movie={movie} movies={movies} />
     </Link>
   );
 }
