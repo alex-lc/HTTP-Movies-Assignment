@@ -2,9 +2,6 @@ import React from "react";
 import axios from "axios";
 import MovieCard from "./MovieCard";
 
-// components
-import UpdateForm from "../components/UpdateForm";
-
 export default class Movie extends React.Component {
   constructor(props) {
     super(props);
@@ -37,10 +34,7 @@ export default class Movie extends React.Component {
   };
 
   updateMovie = () => {
-    this.setState({
-      ...this.state,
-      isEditing: !this.state.isEditing
-    });
+    this.props.history.push(`/update-movie/${this.state.movie.id}`);
   }
 
   deleteMovie = () => {
@@ -70,7 +64,6 @@ export default class Movie extends React.Component {
         <div className="save-button" onClick={this.deleteMovie}>
           Delete
         </div>
-        {this.state.isEditing && <UpdateForm movie={this.state.movie} />}
       </div>
     );
   }
